@@ -6,8 +6,12 @@ import Layout from './components/layout/Layout';
 import ErrorPage from './components/layout/ErrorPage';
 
 import Clientes from './components/clientes/Clientes';
-import NuevoCliente from './components/clientes/nuevoCliente';
-import EditarCliente from './components/clientes/editarCliente';
+import NuevoCliente from './components/clientes/NuevoCliente';
+import EditarCliente from './components/clientes/EditarCliente';
+
+import Productos from './components/productos/Productos';
+import NuevoProducto from './components/productos/NuevoProducto';
+import EditarProducto from './components/productos/EditarProducto';
 
 const router = createBrowserRouter([
   {
@@ -32,17 +36,17 @@ const router = createBrowserRouter([
       },
       {
         path: '/productos',
-        element: <p>Todos los Productos</p>,
+        element: <Productos/>,
         errorElement: <ErrorPage />,
       },
       {
         path: '/productos/nuevo',
-        element: <p>Producto nuevo</p>,
+        element: <NuevoProducto/>,
         errorElement: <ErrorPage />,
       },
       {
         path: '/productos/editar/:id',
-        element: <p>Producto editado</p>,
+        element: <EditarProducto/>,
         errorElement: <ErrorPage />,
       },
       {

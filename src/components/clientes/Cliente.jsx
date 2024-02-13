@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
 
 function Cliente({ cliente, setCounter, counter }) {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
 	const { _id, nombre, apellido, empresa, email, telefono } = cliente;
 

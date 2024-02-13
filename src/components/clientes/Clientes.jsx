@@ -1,9 +1,9 @@
 import { useEffect, useState, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 import clienteAxios from '../../config/axios.js';
 import Cliente from './Cliente';
 import Spinner from '../layout/Spinner';
-import { Link } from 'react-router-dom';
 
 function Clientes(props) {
     const [ clientes, setClientes ] = useState([]);
