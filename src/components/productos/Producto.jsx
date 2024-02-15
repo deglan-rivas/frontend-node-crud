@@ -38,7 +38,7 @@ function Producto({producto, counter, setCounter}) {
             <p className="nombre">{nombre}</p>
             <p className="precio">$ {precio}</p>
             { imagen ? (
-                <img src={`http://localhost:5000/${imagen}`} alt={`imagen ${nombre}`} />
+                <img src={`${import.meta.env.VITE_BACKEND_URL}/${imagen}`} alt={`imagen ${nombre}`} />
             ) : null  }
         </div>
         <div className="acciones">

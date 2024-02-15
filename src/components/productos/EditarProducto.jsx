@@ -112,7 +112,7 @@ function EditarProductos() {
         <div className="campo">
           <label>Imagen:</label>
           { imagen ? (
-            <img src={`http://localhost:5000/${imagen}`} alt="imagen" width="300" />
+            <img src={`${import.meta.env.VITE_BACKEND_URL}/${imagen}`} alt="imagen" width="300" />
           ) : null }
           <input 
             type="file"  
