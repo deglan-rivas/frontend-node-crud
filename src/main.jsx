@@ -13,6 +13,9 @@ import Productos from './components/productos/Productos';
 import NuevoProducto from './components/productos/NuevoProducto';
 import EditarProducto from './components/productos/EditarProducto';
 
+import Pedidos from './components/pedidos/Pedidos';
+import NuevoPedido from './components/pedidos/NuevoPedido';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,17 +54,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/pedidos',
-        element: <p>Todos los Pedidos</p>,
+        element: <Pedidos/>,
         errorElement: <ErrorPage />,
       },
       {
         path: '/pedidos/nuevo/:id',
-        element: <p>Pedido nuevo</p>,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: '/pedidos/editar/:id',
-        element: <p>Pedido editado</p>,
+        element: <NuevoPedido/>,
         errorElement: <ErrorPage />,
       },
       {
