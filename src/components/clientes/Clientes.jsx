@@ -9,15 +9,19 @@ function Clientes(props) {
     const [ clientes, setClientes ] = useState([]);
     // const [ areClientsChanged, setAreClientsChanged] = useState(false)
     const [counter, setCounter] = useState(0)
+    const [isDone, setIsDone] = useState(true)
 
     useEffect( () => {
       const consultarAPI = async () => {
           try {
+            setIsDone(false)
             const clientesConsulta = await clienteAxios.get('/clientes');
-              // const clientesConsulta = await fetch('http://127.0.0.1:5000/clientes');
-              console.log(clientesConsulta)
+            // const clientesConsulta = await fetch('http://127.0.0.1:5000/clientes');
+            console.log(clientesConsulta)
+            // console.log(import.meta.env.VITE_BACKEND_URL)
 
-              setClientes(clientesConsulta.data);
+            setClientes(clientesConsulta.data)
+            setIsDone(true)
 
           } catch (error) {
             console.log(error)
@@ -26,7 +30,7 @@ function Clientes(props) {
       consultarAPI();
     }, [counter] );
 
-    if(!clientes.length) return <Spinner /> 
+    if(!isDone) return <Spinner /> 
 
     return (
         <Fragment>

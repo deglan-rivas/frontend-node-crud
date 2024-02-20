@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  frontend:
+    image: deglanrivas/frontend-node-crud:1.2.0
+    ports:
+      - 8080:80
+    environment:
+      - VITE_BACKEND_URL = http://backend:5000
+    depends_on:
+      - backend
+    stdin_open: true
+    tty: true
+    networks:
+      - mern-crm
+
+  backend:
+    image: deglanrivas/backend-node-crud:1.0.0
+    ports:
+      - 5000:5000
+    environment:
+      PORT: 5000
+      FRONTEND_URL: http://frontend:8080
+      MONGODB_CONNECTION_STRING: mongodb://root:password@monguito:27017/clientes?ssl=false&authSource=admin
+    depends_on:
+      - monguito
+    networks:
+      - mern-crm
+
+  monguito:
+    image: mongo:6.0.13-rc0-jammy
+    ports:
+      - 27017:27017
+    volumes:
+      - ./monguito-data-compose:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - mern-crm
+
+networks:
+  mern-crm:
+    driver: bridge
+
+# dont add commments inside identation xd
+# by default docker compose creates a new network and name containers as name of root folder -> so we dont need to specify network unless it's necessary
+# by default containers reference other containers by the name of the service: links just add another name to do same action
+# i prefer manage volumes inside a folder instead of letting docker compose do it, just to delete it manually at the end of the project
+
+# validar que el ./monguito-data no falle y que las 2 var env de mongo estén OK -> sino usar un volumes:monguito-data: y borrar el ./mong... -> no olvidar subir la imagen del backend xD y cambiar su :latest -> también puede haber un error al usar el nginx del front y pasarle así las var env, el leifer lo hace con un nginx.conf y un archivo especial, ver su tutorial de docker frontend chuchaza -> para mañana: https://www.youtube.com/results?search_query=docker+compose+mern -> https://www.youtube.com/watch?v=PhmIsxkskhY -> https://www.youtube.com/watch?v=Aj8E-Vhs1VM

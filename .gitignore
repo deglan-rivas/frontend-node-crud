@@ -24,4 +24,7 @@ dist-ssr
 *.sw?
 
 restapis_crm_frontend-master/
+monguito-data/
+monguito-data-compose/
+
 .env

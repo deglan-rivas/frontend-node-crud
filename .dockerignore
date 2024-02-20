@@ -1,0 +1,10 @@
+restapis_crm_frontend-master
+monguito-data
+monguito-data-compose
+
+node_modules
+
+.env
+.git
+.gitignore
+.vscode
